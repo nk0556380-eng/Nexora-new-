@@ -2,16 +2,17 @@
 # session cookie, SameSite=Lax and connect-src 'self' all keep working.
 /api/*  __RENDER_API_URL__/api/:splat  200
 
-# Fold alternate URLs into one canonical address per page.
-/premium.html        /             301
-/premium             /             301
-/login.html          /login        301
-/onboarding.html     /onboarding   301
-/dashboard.html      /dashboard    301
-/invoice.html        /invoice      301
-/client-login.html   /client/login 301
-/client-portal.html  /client       301
-/client-invoice.html /client-invoice 301
+# Fold alternate URLs into one canonical address per page. The ! overrides
+# Netlify's shadowing: each .html path has a real file in the publish dir.
+/premium.html        /             301!
+/premium             /             301!
+/login.html          /login        301!
+/onboarding.html     /onboarding   301!
+/dashboard.html      /dashboard    301!
+/invoice.html        /invoice      301!
+/client-login.html   /client/login 301!
+/client-portal.html  /client       301!
+/client-invoice.html /client-invoice 301!
 
 # Clean page URLs served from the static files in this publish directory.
 /  /premium.html  200

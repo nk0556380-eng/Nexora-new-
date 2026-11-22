@@ -1,0 +1,20 @@
+{
+  "name": "nexora-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nexora — outsourced sales platform with onboarding, order dashboard and invoicing",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --env-file-if-exists=.env --watch server/index.js",
+    "build": "node scripts/build-static.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "compression": "^1.8.2",
+    "express": "^4.22.3"
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Onboard your agency with Nexora — agency details, target profile, approved list and consent in one form.">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Onboarding — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="onboarding">
+  <div class="app-ambient" aria-hidden="true"></div>
+
+  <header class="public-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/brand/nexora-mark.svg" alt=""><span class="brand-name">Nexora<span>.</span></span></a>
+      <a class="header-back" href="/">← Back to site</a>
+    </div>
+  </header>
+
+  <main class="onboard-wrap wrap">
+    <div class="onboard-intro">
+      <p class="kicker"><span>01</span> Client onboarding</p>
+      <h1>Let's get the <span class="grad">basics right.</span></h1>
+      <p class="section-sub">Ten minutes now saves a lot of back-and-forth later. Tell us how your agency works and what a good prospect looks like.</p>
+      <div class="onboard-progress" role="list" aria-label="Form sections"><span role="listitem" class="is-active" aria-current="step">1 · Agency</span><span role="listitem">2 · Outbound</span><span role="listitem">3 · Consent</span></div>
+    </div>
+
+    <div class="onboard-layout">
+      <form class="onboard-form" id="onboarding-form" novalidate>
+        <section class="form-block" aria-labelledby="agency-title">
+          <div class="form-block-head"><span>01</span><div><h2 id="agency-title">The agency</h2><p>Who we would be working with.</p></div></div>
+          <div class="form-grid">
+            <div class="field"><label for="o-agency">Agency name <b aria-hidden="true">*</b></label><input id="o-agency" name="agency" type="text" placeholder="Northstar Digital" autocomplete="organization" required></div>
+            <div class="field"><label for="o-contact">Contact name <b aria-hidden="true">*</b></label><input id="o-contact" name="contact_name" type="text" placeholder="Ananya Rao" autocomplete="name" required></div>
+            <div class="field"><label for="o-email">Work email <b aria-hidden="true">*</b></label><input id="o-email" name="email" type="email" placeholder="you@agency.com" autocomplete="email" required></div>
+            <div class="field"><label for="o-phone">Phone</label><input id="o-phone" name="phone" type="tel" placeholder="+91 98…" autocomplete="tel"></div>
+            <div class="field"><label for="o-website">Website</label><input id="o-website" name="website" type="url" placeholder="https://youragency.com" autocomplete="url"></div>
+            <div class="field"><label for="o-city">City</label><input id="o-city" name="city" type="text" placeholder="Bengaluru" autocomplete="address-level2"></div>
+          </div>
+        </section>
+
+        <section class="form-block" aria-labelledby="outbound-title">
+          <div class="form-block-head"><span>02</span><div><h2 id="outbound-title">Outbound setup</h2><p>The rules we will work inside.</p></div></div>
+          <div class="form-grid">
+            <div class="field"><label for="o-services">Services you sell</label><input id="o-services" name="services" type="text" placeholder="SEO, Performance, Web development"></div>
+            <div class="field"><label for="o-volume">Expected monthly call volume</label><select id="o-volume" name="monthly_volume"><option value="">Select a range</option><option>Under 200</option><option>200–500</option><option>500–1,000</option><option>1,000+</option></select></div>
+            <div class="field field-full"><label for="o-target">Ideal customer profile</label><textarea id="o-target" name="target_profile" rows="3" placeholder="Industry, company size, location, decision-maker role…"></textarea></div>
+            <div class="field field-full"><label for="o-list">Where will the prospect list come from?</label><select id="o-list" name="list_source"><option value="">Select a source</option><option>Client-supplied, opted in</option><option>Existing CRM with consent</option><option>To be scoped separately</option><option>Other</option></select></div>
+            <div class="field field-full"><label for="o-notes">Anything else we should know?</label><textarea id="o-notes" name="notes" rows="3" placeholder="Current outreach, timings, tone, things to avoid…"></textarea></div>
+          </div>
+        </section>
+
+        <section class="form-block" aria-labelledby="consent-title">
+          <div class="form-block-head"><span>03</span><div><h2 id="consent-title">Consent</h2><p>One last thing.</p></div></div>
+          <label class="consent"><input id="o-consent" name="consent" type="checkbox"><span>I confirm I am authorised to share these details and that any prospect list provided will be one I am permitted to use. <b aria-hidden="true">*</b></span></label>
+          <p class="field-error" id="consent-error" hidden></p>
+          <button class="btn btn-primary btn-block" type="submit" id="onboard-submit">Submit onboarding <span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="onboard-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </form>
+
+      <aside class="onboard-aside" aria-label="Onboarding help">
+        <div class="aside-card">
+          <span class="aside-label">WHAT HAPPENS NEXT</span>
+          <ol>
+            <li><b>We review</b><span>Fit check against the narrow offer.</span></li>
+            <li><b>You hear back</b><span>Accepted or declined, plainly.</span></li>
+            <li><b>We scope</b><span>Profile, limits, qualification and reporting.</span></li>
+            <li><b>We start</b><span>Calls begin only inside agreed rules.</span></li>
+          </ol>
+        </div>
+        <div class="aside-note">
+          <span class="aside-label">OUR RULES</span>
+          <p>No bought lists. No guaranteed deals. No unlimited calling. Pricing is scoped after this form — the plan's sample figures are not published rates.</p>
+        </div>
+        <p class="aside-foot">Prefer email? <a href="mailto:nexora7021@gmail.com">nexora7021@gmail.com</a></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="public-footer"><div class="wrap"><p>© <span id="year">2026</span> Nexora. Process over promises.</p><a href="/login">Admin sign in →</a></div></footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

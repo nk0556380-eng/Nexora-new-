@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Generated Netlify publish directory (built from the templates in deploy/netlify/)
+public/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Private data: database, sessions, leads, backups
+private/
+data/
+backups/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.zip
+*.tar.gz
+
+# Lead exports
+leads/
+*.csv
+*.pdf
+
+# Logs
+*.log

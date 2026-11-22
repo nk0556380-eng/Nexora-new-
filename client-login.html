@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Client sign in — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <link rel="stylesheet" href="/assets/css/portal.css">
+</head>
+<body data-page="client-login">
+  <div class="app-ambient" aria-hidden="true"></div>
+  <main class="auth-shell">
+    <div class="auth-card">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/brand/nexora-mark.svg" alt=""><span class="brand-name">Nexora<span>.</span></span></a>
+      <div class="auth-head">
+        <h1>Your workspace.</h1>
+        <p>Sign in to see where your engagement stands.</p>
+      </div>
+      <form id="client-login-form" novalidate>
+        <div class="field">
+          <label for="c-phone">Phone number <b aria-hidden="true">*</b></label>
+          <input id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                 placeholder="The number you used with us" aria-describedby="client-login-hint client-login-error" required>
+        </div>
+        <div class="field">
+          <label for="c-code">Access code <b aria-hidden="true">*</b></label>
+          <input id="c-code" name="code" type="text" inputmode="text" autocomplete="one-time-code"
+                 placeholder="e.g. 7K2P-9M4Q" spellcheck="false" aria-describedby="client-login-hint client-login-error" required>
+        </div>
+        <p class="field-hint" id="client-login-hint">Use the number you purchased the service with and the code shared by your Nexora contact. Hyphens are optional.</p>
+        <p class="form-status is-error" id="client-login-error" role="alert" aria-live="assertive" aria-atomic="true"></p>
+        <button class="btn btn-primary btn-block" type="submit" id="client-login-submit">Sign in <span aria-hidden="true">↗</span></button>
+      </form>
+      <a class="auth-back" href="/">← Back to site</a>
+    </div>
+  </main>
+  <script src="/assets/js/portal.js"></script>
+</body>
+</html>

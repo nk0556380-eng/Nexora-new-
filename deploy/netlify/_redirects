@@ -1,0 +1,13 @@
+# Keep /api/* same-origin in the browser. Netlify proxies to Render so the
+# session cookie, SameSite=Lax and connect-src 'self' all keep working.
+/api/*  __RENDER_API_URL__/api/:splat  200
+
+# Clean page URLs served from the static files in this publish directory.
+/  /premium.html  200
+/login  /login.html  200
+/onboarding  /onboarding.html  200
+/dashboard  /dashboard.html  200
+/invoice/*  /invoice.html  200
+/client/login  /client-login.html  200
+/client/invoice/*  /client-invoice.html  200
+/client  /client-portal.html  200

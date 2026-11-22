@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Dashboard — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body data-page="dashboard">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Workspace">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/brand/nexora-mark.svg" alt=""><span class="brand-name">Nexora<span>.</span></span></a>
+      <nav class="side-nav" aria-label="Dashboard navigation">
+        <button type="button" class="side-link is-active" data-view="overview" aria-current="page"><span aria-hidden="true">▦</span> Overview</button>
+        <button type="button" class="side-link" data-view="orders"><span aria-hidden="true">▤</span> Orders <b id="side-orders">0</b></button>
+        <button type="button" class="side-link" data-view="onboarding"><span aria-hidden="true">◷</span> Onboarding <b id="side-onboarding">0</b></button>
+        <button type="button" class="side-link" data-view="invoices"><span aria-hidden="true">▧</span> Invoices <b id="side-invoices">0</b></button>
+        <button type="button" class="side-link" data-view="logins"><span aria-hidden="true">◇</span> Client logins <b id="side-logins">0</b></button>
+      </nav>
+      <div class="side-foot">
+        <div class="side-user"><span aria-hidden="true">AM</span><div><b>Admin</b><small>Workspace owner</small></div></div>
+        <button type="button" class="side-logout" id="logout-btn">Sign out ↗</button>
+      </div>
+    </aside>
+
+    <main class="app-main" id="main-content" tabindex="-1">
+      <header class="topbar">
+        <button type="button" class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">☰</button>
+        <div class="topbar-title"><h1 id="page-title" tabindex="-1">Overview</h1><p id="page-sub">Everything happening in your workspace.</p></div>
+        <button type="button" class="btn btn-primary btn-sm" id="new-invoice-btn">+ New invoice</button>
+      </header>
+
+      <div class="views" aria-busy="true">
+        <!-- OVERVIEW -->
+        <section class="view is-active" data-view="overview" aria-label="Overview">
+          <div class="kpis">
+            <div class="kpi"><span>NEW REQUESTS</span><strong id="kpi-new">—</strong><em>Awaiting your decision</em></div>
+            <div class="kpi"><span>ACCEPTED</span><strong id="kpi-accepted">—</strong><em>Active engagements</em></div>
+            <div class="kpi"><span>PENDING ONBOARDING</span><strong id="kpi-pending">—</strong><em>To review and approve</em></div>
+            <div class="kpi"><span>TOTAL BILLED</span><strong id="kpi-billed">—</strong><em>Sent &amp; paid, excl. demo</em></div>
+          </div>
+          <div class="overview-grid">
+            <div class="data-card">
+              <div class="data-card-head"><div><h2 id="recent-title">Recent requests</h2><p>Latest enquiries from the site.</p></div><button type="button" class="link-btn" data-jump="orders">View all →</button></div>
+              <div class="table-scroll" tabindex="0" role="region" aria-labelledby="recent-title"><table><caption class="visually-hidden">Recent requests</caption><thead><tr><th scope="col">Ref</th><th scope="col">Agency</th><th scope="col">Service</th><th scope="col">Status</th><th scope="col">Received</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody id="recent-orders-body"></tbody></table></div>
+            </div>
+            <div class="data-card">
+              <div class="data-card-head"><div><h2>Quick actions</h2><p>The three things you do most.</p></div></div>
+              <div class="quick-actions">
+                <button type="button" data-jump="orders"><span>▤</span><div><b>Review orders</b><small>Accept or reject new requests</small></div><i>→</i></button>
+                <button type="button" data-jump="onboarding"><span>◷</span><div><b>Approve onboarding</b><small>Check submitted agency details</small></div><i>→</i></button>
+                <button type="button" id="quick-invoice"><span>▧</span><div><b>Raise an invoice</b><small>Add line items and set tax</small></div><i>→</i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ORDERS -->
+        <section class="view" data-view="orders" aria-labelledby="orders-title">
+          <div class="data-card">
+            <div class="data-card-head"><div><h2 id="orders-title">Orders</h2><p>Every engagement request, in one place.</p></div><div class="filters" id="order-filters" role="group" aria-label="Filter orders by status"><button type="button" class="is-active" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="new" aria-pressed="false">New</button><button type="button" data-filter="accepted" aria-pressed="false">Accepted</button><button type="button" data-filter="rejected" aria-pressed="false">Rejected</button></div></div>
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="orders-title"><table><caption class="visually-hidden">All engagement requests</caption><thead><tr><th scope="col">Ref</th><th scope="col">Agency</th><th scope="col">Contact</th><th scope="col">Service</th><th scope="col">Status</th><th scope="col">Received</th><th scope="col">Actions</th></tr></thead><tbody id="orders-body"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- ONBOARDING -->
+        <section class="view" data-view="onboarding" aria-labelledby="onboarding-title">
+          <div class="data-card">
+            <div class="data-card-head"><div><h2 id="onboarding-title">Onboarding</h2><p>Agency submissions waiting for a decision.</p></div></div>
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="onboarding-title"><table><caption class="visually-hidden">Onboarding submissions</caption><thead><tr><th scope="col">Agency</th><th scope="col">Contact</th><th scope="col">City</th><th scope="col">Status</th><th scope="col">Submitted</th><th scope="col">Actions</th></tr></thead><tbody id="onboarding-body"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- INVOICES -->
+        <section class="view" data-view="invoices" aria-labelledby="invoices-title">
+          <div class="data-card">
+            <div class="data-card-head"><div><h2 id="invoices-title">Invoices</h2><p>Draft, sent and paid — all tracked here.</p></div><button type="button" class="btn btn-secondary btn-sm" id="new-invoice-btn-2">+ New invoice</button></div>
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="invoices-title"><table><caption class="visually-hidden">Invoices</caption><thead><tr><th scope="col">Number</th><th scope="col">Client</th><th scope="col">Issued</th><th scope="col">Due</th><th scope="col">Total</th><th scope="col">Status</th><th scope="col">Actions</th></tr></thead><tbody id="invoices-body"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- CLIENT LOGINS -->
+        <section class="view" data-view="logins" aria-labelledby="logins-title">
+          <div class="data-card">
+            <div class="data-card-head"><div><h2 id="logins-title">Client logins</h2><p>Phone number + access code for each client.</p></div><button type="button" class="btn btn-secondary btn-sm" id="new-login-btn">+ Create login</button></div>
+            <div class="table-scroll" tabindex="0" role="region" aria-labelledby="logins-title"><table><caption class="visually-hidden">Client portal accounts</caption><thead><tr><th scope="col">Agency</th><th scope="col">Contact</th><th scope="col">Phone</th><th scope="col">Onboarding</th><th scope="col">Login</th><th scope="col">Actions</th></tr></thead><tbody id="logins-body"></tbody></table></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head"><h2 id="modal-title">—</h2><button type="button" id="modal-close" aria-label="Close dialog">×</button></div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script src="assets/js/money.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

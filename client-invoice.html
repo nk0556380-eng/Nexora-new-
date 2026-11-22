@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Invoice — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <link rel="stylesheet" href="/assets/css/portal.css">
+</head>
+<body data-page="client-invoice">
+  <a class="skip-link" href="#invoice-sheet">Skip to invoice</a>
+  <header class="invoice-toolbar">
+    <a class="btn btn-secondary btn-sm" href="/client">← Back to portal</a>
+    <div class="invoice-toolbar-right"><span class="status-pill" id="invoice-status" role="status" aria-live="polite">—</span><button type="button" class="btn btn-primary btn-sm" id="print-btn" disabled>Print / Save PDF</button></div>
+  </header>
+  <main class="invoice-page">
+    <div class="invoice-sheet" id="invoice-sheet" aria-busy="true">
+      <div class="invoice-loading">Loading invoice…</div>
+    </div>
+  </main>
+  <div class="toast" id="portal-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script src="/assets/js/portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[build]
+  command = "npm ci && npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# Static files are copied into public/ by scripts/build-static.js. It rewrites
+# _redirects with the Render service URL supplied as RENDER_API_URL.
+# Page rules and headers live in deploy/netlify/ so there is one source of truth.

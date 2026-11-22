@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Client portal — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <link rel="stylesheet" href="/assets/css/portal.css">
+</head>
+<body data-page="client-portal">
+  <a class="skip-link" href="#portal-main">Skip to content</a>
+  <div class="portal-shell">
+    <aside class="portal-side" aria-label="Client portal navigation">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/brand/nexora-mark.svg" alt=""><span class="brand-name">Nexora<span>.</span></span></a>
+      <nav class="portal-nav" aria-label="Portal sections">
+        <button type="button" class="portal-link is-active" data-view="overview" aria-current="page"><span aria-hidden="true">▦</span> Overview</button>
+        <button type="button" class="portal-link" data-view="orders"><span aria-hidden="true">▤</span> Orders <b id="portal-side-orders">0</b></button>
+        <button type="button" class="portal-link" data-view="invoices"><span aria-hidden="true">▧</span> Invoices <b id="portal-side-invoices">0</b></button>
+        <button type="button" class="portal-link" data-view="profile"><span aria-hidden="true">◇</span> Profile</button>
+      </nav>
+      <div class="portal-side-foot">
+        <div class="portal-user"><span aria-hidden="true" id="portal-initials">—</span><div><b id="portal-user-name">Client</b><small id="portal-user-agency">Nexora partner</small></div></div>
+        <button type="button" class="btn btn-ghost btn-sm" id="portal-logout">Sign out ↗</button>
+      </div>
+    </aside>
+
+    <main class="portal-main" id="portal-main" tabindex="-1">
+      <header class="portal-topbar">
+        <div><h1 id="portal-title" tabindex="-1">Overview</h1><p id="portal-sub">Your engagement at a glance.</p></div>
+      </header>
+
+      <div class="portal-views" id="portal-views" aria-busy="true">
+        <section class="portal-view is-active" data-view="overview" aria-labelledby="overview-heading">
+          <div class="portal-welcome">
+            <span class="portal-eyebrow">YOUR PROGRESS</span>
+            <h2 id="overview-heading">Welcome back.</h2>
+            <p id="portal-welcome-copy">Loading your current step…</p>
+            <span class="portal-progress-badge"><i aria-hidden="true"></i><span id="portal-progress-label">Step — of 5</span></span>
+          </div>
+          <div class="portal-grid">
+            <div class="portal-card">
+              <h2>The journey</h2>
+              <p>Every stage, from first enquiry to payment.</p>
+              <ol class="stepper" id="portal-steps" aria-label="Engagement steps"><li class="step"><div class="step-marker">—</div><div><div class="step-label">Loading steps…</div></div></li></ol>
+            </div>
+            <div>
+              <div class="portal-card">
+                <h2>Your numbers</h2>
+                <p>Live figures from your workspace.</p>
+                <div class="portal-stat-list" id="portal-stats"></div>
+              </div>
+              <div class="portal-card portal-card-spaced">
+                <h2>Recent activity</h2>
+                <p>The latest updates on your account.</p>
+                <ul class="activity-list" id="portal-activity"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="portal-view" data-view="orders" aria-labelledby="portal-orders-heading">
+          <div class="portal-card">
+            <h2 id="portal-orders-heading">Orders</h2>
+            <p>Every request you have sent us, in one place.</p>
+            <div class="portal-table-wrap table-scroll" tabindex="0" role="region" aria-labelledby="portal-orders-heading">
+              <table><caption class="visually-hidden">Your orders</caption><thead><tr><th scope="col">Reference</th><th scope="col">Service</th><th scope="col">Status</th><th scope="col">Received</th></tr></thead><tbody id="portal-orders-body"></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="portal-view" data-view="invoices" aria-labelledby="portal-invoices-heading">
+          <div class="portal-card">
+            <h2 id="portal-invoices-heading">Invoices</h2>
+            <p>Issued invoices and their payment status. Drafts are not shown.</p>
+            <div class="portal-table-wrap table-scroll" tabindex="0" role="region" aria-labelledby="portal-invoices-heading">
+              <table><caption class="visually-hidden">Your invoices</caption><thead><tr><th scope="col">Number</th><th scope="col">Issued</th><th scope="col">Due</th><th scope="col">Total</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody id="portal-invoices-body"></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="portal-view" data-view="profile" aria-labelledby="portal-profile-heading">
+          <div class="portal-card">
+            <h2 id="portal-profile-heading">Your details</h2>
+            <p>The information we use to run your engagement.</p>
+            <div class="portal-detail-grid" id="portal-profile"></div>
+            <p class="portal-note">Need to change something? Email nexora7021@gmail.com and we will update it for you.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="portal-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script src="/assets/js/portal.js"></script>
+</body>
+</html>

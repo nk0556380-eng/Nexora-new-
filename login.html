@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBF3E8">
+  <title>Sign in — Nexora</title>
+  <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/nexora-mark.svg">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/ui.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="login">
+  <div class="app-ambient" aria-hidden="true"></div>
+  <main class="auth-shell">
+    <div class="auth-card">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/brand/nexora-mark.svg" alt=""><span class="brand-name">Nexora<span>.</span></span></a>
+      <div class="auth-head">
+        <h1>Welcome back.</h1>
+        <p>Sign in to your Nexora workspace.</p>
+      </div>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="l-password">Password</label>
+          <div class="password-wrap">
+            <input id="l-password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" aria-describedby="login-error" required>
+            <button type="button" id="toggle-password" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+        </div>
+        <p class="form-status is-error" id="login-error" role="alert" aria-live="assertive" aria-atomic="true"></p>
+        <button class="btn btn-primary btn-block" type="submit" id="login-submit">Sign in <span aria-hidden="true">↗</span></button>
+      </form>
+      <a class="auth-back" href="/">← Back to site</a>
+    </div>
+  </main>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

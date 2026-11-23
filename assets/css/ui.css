@@ -86,6 +86,11 @@ img { max-width: 100%; }
   border: 0;
 }
 
+.gtm-noscript {
+  display: none;
+  visibility: hidden;
+}
+
 .wrap {
   width: min(calc(100% - (var(--gutter) * 2)), var(--container));
   margin-inline: auto;

@@ -41,13 +41,14 @@ const CONTENT_SECURITY_POLICY = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self'",
   // All page styling lives in served stylesheets. No inline style attributes
   // are used, so this directive does not need 'unsafe-inline'.
   "style-src 'self'",
-  `script-src 'self' '${INLINE_SCRIPT_HASH}'`,
-  "connect-src 'self'",
+  `script-src 'self' '${INLINE_SCRIPT_HASH}' https://www.googletagmanager.com`,
+  "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com",
+  "frame-src https://www.googletagmanager.com",
   "manifest-src 'self'"
 ].join('; ');
 

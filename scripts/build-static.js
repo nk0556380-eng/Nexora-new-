@@ -16,7 +16,7 @@ const STATIC_TEMPLATES = ['robots.txt', 'sitemap.xml', 'google7f8c2f6bbd121628.h
 const renderApiUrl = (process.env.RENDER_API_URL || '').replace(/\/+$/, '');
 if (!renderApiUrl) {
   throw new Error(
-    'RENDER_API_URL is required for the Netlify build, e.g. https://nexora-api.onrender.com'
+    'RENDER_API_URL is required for the Netlify build, e.g. https://nexora-api-v2.onrender.com'
   );
 }
 try {

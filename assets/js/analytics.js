@@ -16,3 +16,16 @@ const gtmScript = document.createElement('script');
 gtmScript.async = true;
 gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}`;
 document.head.appendChild(gtmScript);
+
+const CLARITY_PROJECT_ID = 'zi3j9t5ijy';
+
+window.clarity =
+  window.clarity ||
+  function queueClarityEvent() {
+    (window.clarity.q = window.clarity.q || []).push(arguments);
+  };
+
+const clarityScript = document.createElement('script');
+clarityScript.async = true;
+clarityScript.src = `https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}`;
+document.head.appendChild(clarityScript);

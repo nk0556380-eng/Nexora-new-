@@ -11,6 +11,8 @@ const PAGES = [
   'client-login.html', 'client-portal.html', 'client-invoice.html'
 ];
 
+const STATIC_TEMPLATES = ['robots.txt', 'sitemap.xml', 'google7f8c2f6bbd121628.html'];
+
 const renderApiUrl = (process.env.RENDER_API_URL || '').replace(/\/+$/, '');
 if (!renderApiUrl) {
   throw new Error(
@@ -36,7 +38,8 @@ const redirects = fs.readFileSync(path.join(TEMPLATES_DIR, '_redirects'), 'utf8'
   .replaceAll('__RENDER_API_URL__', renderApiUrl);
 fs.writeFileSync(path.join(PUBLIC_DIR, '_redirects'), redirects);
 fs.copyFileSync(path.join(TEMPLATES_DIR, '_headers'), path.join(PUBLIC_DIR, '_headers'));
-fs.copyFileSync(path.join(TEMPLATES_DIR, 'robots.txt'), path.join(PUBLIC_DIR, 'robots.txt'));
-fs.copyFileSync(path.join(TEMPLATES_DIR, 'sitemap.xml'), path.join(PUBLIC_DIR, 'sitemap.xml'));
+for (const file of STATIC_TEMPLATES) {
+  fs.copyFileSync(path.join(TEMPLATES_DIR, file), path.join(PUBLIC_DIR, file));
+}
 
 console.log(`Netlify static site written to public/ (API proxy → ${renderApiUrl})`);
